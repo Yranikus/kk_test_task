@@ -1,0 +1,13 @@
+version: "3.8"
+name: weather
+
+services:
+  weather-api:
+    build:
+      dockerfile: dockerfiles/LocalDeploy.Dockerfile
+      args:
+        PORT: ${INNER_PORT}
+    env_file:
+      - .env
+    ports:
+      - "${OUTER_PORT}:${INNER_PORT}"

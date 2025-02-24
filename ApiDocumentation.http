@@ -1,0 +1,5 @@
+###
+GET http://localhost:{{port}}/today
+
+###
+GET http://localhost:{{port}}/week

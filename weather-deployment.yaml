@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-app
+  labels:
+    app: weather-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-app
+  template:
+    metadata:
+      name: weather-app
+      labels:
+        app: weather-app
+    spec:
+      containers:
+        - name: weather-app
+          image: yran38/test-weather-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: INNER_PORT
+              value: "8080"
+            - name: SOURCE
+              value: "ALL"
+      restartPolicy: Always
+      
